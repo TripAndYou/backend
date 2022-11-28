@@ -9,10 +9,10 @@ import javax.persistence.MappedSuperclass;
 import java.time.LocalDateTime;
 
 @Getter
-@MappedSuperclass
-@EntityListeners(AuditingEntityListener.class)
-public abstract class Timestamped {
+@MappedSuperclass //Entity가 자동으로 컬럼으로 인식
+@EntityListeners(AuditingEntityListener.class) //생성된 시간을 자동으로 업데이트
+public abstract class Timestamped { //추상클래스
 
     @CreatedDate
-    private LocalDateTime createdAt;
+    private LocalDateTime writeDate;
 }

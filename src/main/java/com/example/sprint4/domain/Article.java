@@ -7,10 +7,10 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Entity
+@Entity //테이블과 연계됨을 스프링에게 알려줌
 @Getter
 @Setter
-@NoArgsConstructor
+@NoArgsConstructor //기본 생성자 만들기
 public class Article extends Timestamped {
 
     @Id
@@ -31,5 +31,15 @@ public class Article extends Timestamped {
 
     @Column(nullable = false)
     String articleCity;
+
+    public Article(int articleIdx, String title, String html, LocalDateTime writeDate, int articleUserIdx, String articleCity) {
+        this.articleIdx = articleIdx;
+        this.title = title;
+        this.html = html;
+        this.writeDate = writeDate;
+        this.articleUserIdx = articleUserIdx;
+        this.articleCity = articleCity;
+    }
+
 
 }
