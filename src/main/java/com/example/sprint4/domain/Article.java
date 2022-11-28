@@ -1,5 +1,6 @@
 package com.example.sprint4.domain;
 
+import com.example.sprint4.dto.requestDto.ArticleRequestDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -42,4 +43,10 @@ public class Article extends Timestamped {
     }
 
 
+
+    public Article(String title, String html, String articleCity) {
+        this.title = title;
+        this.html = html;
+        this.articleCity = articleCity;
+    }
 }
