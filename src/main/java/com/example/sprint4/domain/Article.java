@@ -8,24 +8,24 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Entity //테이블과 연계됨을 스프링에게 알려줌
+@NoArgsConstructor
 @Getter
 @Setter
-@NoArgsConstructor //기본 생성자 만들기
-public class Article extends Timestamped {
+@Entity
+public class Article extends Timestamped{
 
-    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
     private int articleIdx;
 
     @Column(nullable = false)
     String title;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     String html;
 
-    @Column
-    LocalDateTime writeDate;
+//    @Column
+//    LocalDateTime writeDate;
 
     @Column(nullable = false)
     private int articleUserIdx;
@@ -33,20 +33,21 @@ public class Article extends Timestamped {
     @Column(nullable = false)
     String articleCity;
 
-    public Article(int articleIdx, String title, String html, LocalDateTime writeDate, int articleUserIdx, String articleCity) {
-        this.articleIdx = articleIdx;
+    public Article(String title, String html, LocalDateTime writeDate, String articleCity) {
         this.title = title;
         this.html = html;
-        this.writeDate = writeDate;
-        this.articleUserIdx = articleUserIdx;
         this.articleCity = articleCity;
     }
 
+    public Article(ArticleRequestDto requestDto) {
+        this.title = requestDto.getTitle();
+        this.html = requestDto.getHtml();
+        this.articleCity = requestDto.getArticleCity();
+    }
 
-
-    public Article(String title, String html, String articleCity) {
-        this.title = title;
-        this.html = html;
-        this.articleCity = articleCity;
+    public void update(ArticleRequestDto articleRequestDto) {
+        this.title = articleRequestDto.getTitle();
+        this.html = articleRequestDto.getHtml();
+        this.articleCity = articleRequestDto.getArticleCity();
     }
 }

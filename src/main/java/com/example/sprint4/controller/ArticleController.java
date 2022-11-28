@@ -1,26 +1,28 @@
 package com.example.sprint4.controller;
 
+import com.example.sprint4.domain.Article;
 import com.example.sprint4.dto.requestDto.ArticleRequestDto;
+import com.example.sprint4.dto.responseDto.ArticleResponseDto;
+import com.example.sprint4.repository.ArticleRepository;
 import com.example.sprint4.service.ArticleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
 @RequiredArgsConstructor
+@RestController
 public class ArticleController {
 
+    private final ArticleRepository articleRepository;
     private final ArticleService articleService;
 
-    @PostMapping("/article")
-    public void createArticle(@RequestBody ArticleRequestDto articleRequestDto) {
-        articleService.createArticle(articleRequestDto);
-
-
+    @PostMapping("/article") //create
+    public Article createArticle(@RequestBody ArticleRequestDto articleRequestDto) {
+        Article article = new Article(articleRequestDto);
+        return articleRepository.save(article);
     }
 
-    @GetMapping("/article/detail/{articleIdx}")
-    public int detailArticle(@PathVariable Integer articleIdx) {
-        return articleService.detailArticle(articleIdx);
+    @GetMapping("/article/detail/{articleIdx}") //read
+    public ArticleResponseDto readArticle(@PathVariable Integer articleIdx) {
+        return articleService.readArticle(articleIdx);
     }
-
 }

@@ -2,36 +2,34 @@ package com.example.sprint4.service;
 
 import com.example.sprint4.domain.Article;
 import com.example.sprint4.dto.requestDto.ArticleRequestDto;
+import com.example.sprint4.dto.responseDto.ArticleResponseDto;
 import com.example.sprint4.repository.ArticleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 
-@Service
 @RequiredArgsConstructor
+@Service
 public class ArticleService {
 
     private final ArticleRepository articleRepository;
 
-
-
     @Transactional
-    public void createArticle(ArticleRequestDto articleRequestDto) {
-        String title = articleRequestDto.getTitle();
-        String html = articleRequestDto.getHtml();
-        String articleCity = articleRequestDto.getArticleCity();
-
-        Article article = new Article(title, html, articleCity);
-
-        articleRepository.save(article);
+    public int update(Integer articleIdx, ArticleRequestDto articleRequestDto) {
+        Article article = articleRepository.findById(articleIdx).orElseThrow(
+                () -> new NullPointerException("아이디 존재하지 않습니다.")
+        );
+        article.update(articleRequestDto);
+        return article.getArticleIdx();
     }
 
     @Transactional
-    public int detailArticle(Integer articleIdx) {
-        Article article = articleRepository.findById(articleIdx).orElseThrow(
+    public ArticleResponseDto readArticle(Integer articleIdx) {
+        Article article = articleRepository.findByArticleIdx(articleIdx).orElseThrow(
                 () -> new NullPointerException("게시글이 존재하지 않습니다.")
         );
-        return article.getArticleIdx();
+        ArticleResponseDto articleResponseDto = new ArticleResponseDto(article);
+        return articleResponseDto;
     }
 }
