@@ -11,4 +11,13 @@ public class ArticleRequestDto {
     private String html;
 
     private String articleCity;
+
+    private String articleDistri;
+
+    public ArticleRequestDto(String title, String html, String articleCity, String articleDistri) {
+        this.title = title;
+        this.html = html;
+        this.articleCity = articleCity;
+        this.articleDistri = articleDistri;
+    }
 }

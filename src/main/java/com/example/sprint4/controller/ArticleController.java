@@ -7,6 +7,7 @@ import com.example.sprint4.dto.responseDto.ArticleResponseDto;
 import com.example.sprint4.repository.ArticleRepository;
 import com.example.sprint4.service.ArticleService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,13 +30,25 @@ public class ArticleController {
         return articleService.readArticle(articleIdx);
     }
 
-    @GetMapping("/main/filter") //filter 게시글 read
-    public List<ArticleListResponseDto> readFilterArticle() {
-        return articleService.readFilterArticle();
-    }
-
-    @GetMapping("/main/suggestion") //suggestion 게시글 read
-    public List<ArticleListResponseDto> readSuggestionArticle() {
-        return articleService.readSuggestionArticle();
-    }
+//    @GetMapping("/main/filter") //filter 게시글 read
+//    public List<ArticleListResponseDto> readFilterArticle() {
+//
+//        return articleService.readFilterArticle();
+//    }
+//
+//    @GetMapping("/main/suggestion") //suggestion 게시글 read
+//    public List<ArticleListResponseDto> readSuggestionArticle() {
+//
+//        return articleService.readSuggestionArticle();
+//    }
+//
+//    @GetMapping("/search/{keywords}/popularity") //popularity 검색
+//    public Page<ArticleListResponseDto> searchPopularity(
+//            @PathVariable String keywords,
+//            @RequestParam("page") int page,
+//            @RequestParam("size") int size
+//    ) {
+//        page = page - 1;
+//        return articleService.searchPopularity(keywords, page, size);
+//    }
 }

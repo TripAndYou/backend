@@ -16,13 +16,15 @@ public class ArticleResponseDto {
     private String title;
     private String html;
     private String articleCity;
+    private String articleDistri;
 
     public ArticleResponseDto(Article article) {
         this.articleIdx = article.getArticleIdx();
         this.writeDate = article.getWriteDate();
-        this.articleUserIdx = article.getArticleUserIdx();
+        //this.articleUserIdx = article.getArticleUserIdx();
         this.title =  article.getTitle();
         this.html = article.getHtml();
         this.articleCity = article.getArticleCity();
+        this.articleDistri = article.getArticleDistri();
     }
 }
