@@ -7,6 +7,7 @@ import com.example.sprint4.dto.responseDto.ArticleResponseDto;
 import com.example.sprint4.repository.ArticleRepository;
 import com.example.sprint4.service.ArticleService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,5 +28,10 @@ public class ArticleController {
     @GetMapping("/article/detail/{articleIdx}") //read
     public ArticleResponseDto readArticle(@PathVariable Integer articleIdx) {
         return articleService.readArticle(articleIdx);
+    }
+
+    @GetMapping("/all/article") //전체 게시물 read
+    public List<ArticleListResponseDto> readAllArticle() {
+        return articleService.readAllArticle();
     }
 }

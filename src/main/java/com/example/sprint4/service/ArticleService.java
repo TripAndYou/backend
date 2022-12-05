@@ -6,6 +6,7 @@ import com.example.sprint4.dto.responseDto.ArticleListResponseDto;
 import com.example.sprint4.dto.responseDto.ArticleResponseDto;
 import com.example.sprint4.repository.ArticleRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -35,5 +36,14 @@ public class ArticleService {
         );
         ArticleResponseDto articleResponseDto = new ArticleResponseDto(article);
         return articleResponseDto;
+    }
+
+    public List<ArticleListResponseDto> readAllArticle() {
+        List<Article> articleList = articleRepository.findAllByOrderByWriteDateDesc();
+        List<ArticleListResponseDto> articleListResponseDtoList = new ArrayList<>();
+        for(int i = 0; i < articleList.size(); i++) {
+            articleListResponseDtoList.add(new ArticleListResponseDto(articleList.get(i)));
+        }
+        return articleListResponseDtoList;
     }
 }

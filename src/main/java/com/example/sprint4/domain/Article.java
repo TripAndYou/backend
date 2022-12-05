@@ -27,27 +27,34 @@ public class Article extends Timestamped{
 //    @Column
 //    LocalDateTime writeDate;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private int articleUserIdx;
 
     @Column(nullable = false)
     String articleCity;
 
-    public Article(String title, String content, LocalDateTime writeDate, String articleCity) {
+    @Column(nullable = false)
+    String articleDistri;
+
+
+    public Article(String title, String content, LocalDateTime writeDate, String articleCity, String articleDistri) {
         this.title = title;
         this.content = content;
         this.articleCity = articleCity;
+        this.articleDistri = articleDistri;
     }
 
     public Article(ArticleRequestDto requestDto) {
         this.title = requestDto.getTitle();
         this.content = requestDto.getContent();
         this.articleCity = requestDto.getArticleCity();
+        this.articleDistri = requestDto.getArticleDistri();
     }
 
     public void update(ArticleRequestDto articleRequestDto) {
         this.title = articleRequestDto.getTitle();
         this.content = articleRequestDto.getContent();
         this.articleCity = articleRequestDto.getArticleCity();
+        this.articleDistri = articleRequestDto.getArticleDistri();
     }
 }

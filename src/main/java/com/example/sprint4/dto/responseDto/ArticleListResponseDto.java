@@ -1,5 +1,6 @@
 package com.example.sprint4.dto.responseDto;
 
+import com.example.sprint4.domain.Article;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -14,4 +15,14 @@ public class ArticleListResponseDto {
     private String title;
     private String content;
     private String articleCity;
+    private String articleDistri;
+
+    public ArticleListResponseDto(Article article) {
+        this.articleIdx = article.getArticleUserIdx();
+        this.title = article.getTitle();
+        this.content = article.getContent();
+        this.articleCity = article.getArticleCity();
+        this.articleDistri = article.getArticleDistri();
+
+    }
 }
