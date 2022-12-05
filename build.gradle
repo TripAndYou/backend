@@ -23,9 +23,16 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     compileOnly 'org.projectlombok:lombok'
     runtimeOnly 'com.h2database:h2'
+<<<<<<< HEAD
     runtimeOnly 'mysql:mysql-connector-java'
+=======
+    runtimeOnly 'com.mysql:mysql-connector-java'
+>>>>>>> sprint/feature/article
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // JSON
+    implementation group: 'org.json', name: 'json', version: '20160810'
 }
 
 tasks.named('test') {
