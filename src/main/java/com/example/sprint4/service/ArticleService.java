@@ -36,18 +36,4 @@ public class ArticleService {
         ArticleResponseDto articleResponseDto = new ArticleResponseDto(article);
         return articleResponseDto;
     }
-
-    //filter 목록
-    public List<ArticleListResponseDto> readFilterArticle() {
-        List<Article> articleList = articleRepository.findAllByFilterListOrderByWriteDateDesc();
-        List<ArticleListResponseDto> articleListResponseDto = new ArrayList<>();
-        return articleListResponseDto;
-    }
-
-    //suggestion 목록
-    public List<ArticleListResponseDto> readSuggestionArticle() {
-        List<Article> articleList = articleRepository.findAllBySuggetionListOrderByWriteDateDesc();
-        List<ArticleListResponseDto> articleListResponseDto = new ArrayList<>();
-        return articleListResponseDto;
-    }
 }

@@ -28,14 +28,4 @@ public class ArticleController {
     public ArticleResponseDto readArticle(@PathVariable Integer articleIdx) {
         return articleService.readArticle(articleIdx);
     }
-
-    @GetMapping("/main/filter") //filter 게시글 read
-    public List<ArticleListResponseDto> readFilterArticle() {
-        return articleService.readFilterArticle();
-    }
-
-    @GetMapping("/main/suggestion") //suggestion 게시글 read
-    public List<ArticleListResponseDto> readSuggestionArticle() {
-        return articleService.readSuggestionArticle();
-    }
 }

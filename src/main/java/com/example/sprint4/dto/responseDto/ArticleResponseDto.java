@@ -14,7 +14,7 @@ public class ArticleResponseDto {
     private LocalDateTime writeDate;
     private int articleUserIdx;
     private String title;
-    private String html;
+    private String content;
     private String articleCity;
 
     public ArticleResponseDto(Article article) {
@@ -22,7 +22,7 @@ public class ArticleResponseDto {
         this.writeDate = article.getWriteDate();
         this.articleUserIdx = article.getArticleUserIdx();
         this.title =  article.getTitle();
-        this.html = article.getHtml();
+        this.content = article.getContent();
         this.articleCity = article.getArticleCity();
     }
 }

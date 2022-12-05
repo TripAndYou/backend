@@ -21,8 +21,8 @@ public class Article extends Timestamped{
     @Column(nullable = false)
     String title;
 
-    @Column(nullable = true)
-    String html;
+    @Column(nullable = false)
+    String content;
 
 //    @Column
 //    LocalDateTime writeDate;
@@ -33,21 +33,21 @@ public class Article extends Timestamped{
     @Column(nullable = false)
     String articleCity;
 
-    public Article(String title, String html, LocalDateTime writeDate, String articleCity) {
+    public Article(String title, String content, LocalDateTime writeDate, String articleCity) {
         this.title = title;
-        this.html = html;
+        this.content = content;
         this.articleCity = articleCity;
     }
 
     public Article(ArticleRequestDto requestDto) {
         this.title = requestDto.getTitle();
-        this.html = requestDto.getHtml();
+        this.content = requestDto.getContent();
         this.articleCity = requestDto.getArticleCity();
     }
 
     public void update(ArticleRequestDto articleRequestDto) {
         this.title = articleRequestDto.getTitle();
-        this.html = articleRequestDto.getHtml();
+        this.content = articleRequestDto.getContent();
         this.articleCity = articleRequestDto.getArticleCity();
     }
 }

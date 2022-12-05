@@ -12,6 +12,6 @@ public class ArticleListResponseDto {
     private int articleIdx;
     private LocalDateTime writeDate;
     private String title;
-    private String html;
+    private String content;
     private String articleCity;
 }
