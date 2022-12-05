@@ -8,7 +8,7 @@ public class ArticleRequestDto {
 
     private String title;
 
-    private String html;
+    private String content;
 
     private String articleCity;
 }
