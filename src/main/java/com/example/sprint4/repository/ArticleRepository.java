@@ -12,8 +12,8 @@ public interface ArticleRepository extends JpaRepository<Article, Integer> {
 
     //List<Article> findAllByOrderByWriteDateDesc(); //작성된 날짜를 내림차순으로 정렬(최신순 정렬)
 
-//    List<Article> findAllByFilterListOrderByFilterRegTimeDesc(int filterList);
-//
-//
-//    List<Article> findAllBySuggestionListOrderBySuggestionRegRimeDesc(int suggestionList);
+    List<Article> findAllByFilterListOrderByFilterRegTimeDesc(int filterList);
+
+
+    List<Article> findAllBySuggestionListOrderBySuggestionRegRimeDesc(int suggestionList);
 }
