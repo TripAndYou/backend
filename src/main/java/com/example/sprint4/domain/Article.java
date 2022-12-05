@@ -22,7 +22,7 @@ public class Article extends Timestamped{
     String title;
 
     @Column(nullable = false)
-    String html;
+    String content;
 
 //    @Column
 //    LocalDateTime writeDate;
@@ -36,23 +36,23 @@ public class Article extends Timestamped{
     @Column(nullable = false)
     String articleDistri;
 
-    public Article(String title, String html, String articleCity, String articleDistri) {
+    public Article(String title, String content, String articleCity, String articleDistri) {
         this.title = title;
-        this.html = html;
+        this.content = content;
         this.articleCity = articleCity;
         this.articleDistri = articleDistri;
     }
 
     public Article(ArticleRequestDto requestDto) {
         this.title = requestDto.getTitle();
-        this.html = requestDto.getHtml();
+        this.content = requestDto.getContent();
         this.articleCity = requestDto.getArticleCity();
         this.articleDistri = requestDto.getArticleDistri();
     }
 
     public void update(ArticleRequestDto articleRequestDto) {
         this.title = articleRequestDto.getTitle();
-        this.html = articleRequestDto.getHtml();
+        this.content = articleRequestDto.getContent();
         this.articleCity = articleRequestDto.getArticleCity();
         this.articleDistri = articleRequestDto.getArticleDistri();
     }

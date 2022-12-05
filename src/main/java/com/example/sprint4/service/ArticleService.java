@@ -41,39 +41,4 @@ public class ArticleService {
         ArticleResponseDto articleResponseDto = new ArticleResponseDto(article);
         return articleResponseDto;
     }
-
-    //filter 목록
-    public List<ArticleListResponseDto> readFilterArticle() {
-        List<Article> articleList = articleRepository.findAllByFilterListOrderByFilterRegTimeDesc(1);
-        List<ArticleListResponseDto> articleListResponseDto = new ArrayList<>();
-        return articleListResponseDto;
-    }
-
-    //suggestion 목록
-    public List<ArticleListResponseDto> readSuggestionArticle() {
-        List<Article> articleList = articleRepository.findAllBySuggestionListOrderBySuggestionRegRimeDesc(1);
-        List<ArticleListResponseDto> articleListResponseDto = new ArrayList<>();
-        return articleListResponseDto;
-    }
-
-    //popularity 검색
-    public Page<ArticleListResponseDto> searchPopularity(String keywords, int page, int size) {
-        String keywordsTrimmed = keywords.trim();
-        List<ArticleListResponseDto> articleListResponseDtoList = new ArrayList<>();
-
-        //검색어를 통째로 포함하는 경우 해당 게시글을 검색 결과의 상단으로 이동
-        for (int i = 0; i < articleListResponseDtoList.size(); i++) {
-            if (articleListResponseDtoList.get(i).getTitle().contains(keywordsTrimmed)) {
-                articleListResponseDtoList.add(0, articleListResponseDtoList.get(i));
-                articleListResponseDtoList.remove(i + 1);
-            }
-        }
-        Pageable pageable = PageRequest.of(page, size);
-
-        final int start = (int) pageable.getOffset();
-        final int end = Math.min((start + pageable.getPageSize()), articleListResponseDtoList.size());
-        final Page<ArticleListResponseDto> resultpage = new PageImpl<>(articleListResponseDtoList.subList(start, end), pageable, articleListResponseDtoList.size());
-
-        return resultpage;
-    }
 }
