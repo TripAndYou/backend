@@ -6,7 +6,6 @@ import com.example.sprint4.dto.responseDto.ArticleListResponseDto;
 import com.example.sprint4.dto.responseDto.ArticleResponseDto;
 import com.example.sprint4.repository.ArticleRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -43,6 +42,15 @@ public class ArticleService {
         List<Article> articleList = articleRepository.findAllByOrderByWriteDateDesc();
         List<ArticleListResponseDto> articleListResponseDtoList = new ArrayList<>();
         for(int i = 0; i < articleList.size(); i++) {
+            articleListResponseDtoList.add(new ArticleListResponseDto(articleList.get(i)));
+        }
+        return articleListResponseDtoList;
+    }
+
+    public List<ArticleListResponseDto> searchArticle(String keywords) {
+        List<Article> articleList = articleRepository.findAllByArticleCityContainingOrArticleDistriContainingOrContentContainingOrTitleContainingOrderByWriteDateDesc(keywords, keywords, keywords, keywords);
+        List<ArticleListResponseDto> articleListResponseDtoList = new ArrayList<>();
+        for (int i = 0; i < articleList.size(); i++) {
             articleListResponseDtoList.add(new ArticleListResponseDto(articleList.get(i)));
         }
         return articleListResponseDtoList;

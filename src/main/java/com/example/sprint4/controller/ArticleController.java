@@ -33,4 +33,9 @@ public class ArticleController {
     public List<ArticleListResponseDto> readAllArticle() {
         return articleService.readAllArticle();
     }
+
+    @GetMapping("/articles/{keywords}/search") //게시물 검색
+    public List<ArticleListResponseDto> searchArticle(@PathVariable String keywords) {
+        return articleService.searchArticle(keywords);
+    }
 }
