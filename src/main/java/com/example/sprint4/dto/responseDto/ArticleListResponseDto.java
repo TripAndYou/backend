@@ -18,7 +18,8 @@ public class ArticleListResponseDto {
     private String articleDistri;
 
     public ArticleListResponseDto(Article article) {
-        this.articleIdx = article.getArticleUserIdx();
+        this.articleIdx = article.getArticleIdx();
+        this.writeDate = article.getWriteDate();
         this.title = article.getTitle();
         this.content = article.getContent();
         this.articleCity = article.getArticleCity();
