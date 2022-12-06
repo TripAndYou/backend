@@ -38,6 +38,7 @@ public class ArticleService {
         return articleResponseDto;
     }
 
+    // 게시글 전체 목록 조회
     public List<ArticleListResponseDto> readAllArticle() {
         List<Article> articleList = articleRepository.findAllByOrderByWriteDateDesc();
         List<ArticleListResponseDto> articleListResponseDtoList = new ArrayList<>();
